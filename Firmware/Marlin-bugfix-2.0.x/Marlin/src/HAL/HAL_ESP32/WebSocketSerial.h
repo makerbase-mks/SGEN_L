@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 
 #include "../../inc/MarlinConfig.h"
 
-#include "Stream.h"
+#include <Stream.h>
 
 #ifndef RX_BUFFER_SIZE
   #define RX_BUFFER_SIZE 128
@@ -45,11 +45,11 @@ public:
   RingBuffer(ring_buffer_pos_t size);
   ~RingBuffer();
 
-  int available(void);
-  int peek(void);
-  int read(void);
+  int available();
+  int peek();
+  int read();
   ring_buffer_pos_t read(uint8_t *buffer);
-  void flush(void);
+  void flush();
   ring_buffer_pos_t write(const uint8_t c);
   ring_buffer_pos_t write(const uint8_t* buffer, ring_buffer_pos_t size);
 };
@@ -62,11 +62,11 @@ public:
   WebSocketSerial();
   void begin(const long);
   void end();
-  int available(void);
-  int peek(void);
-  int read(void);
-  void flush(void);
-  void flushTX(void);
+  int available();
+  int peek();
+  int read();
+  void flush();
+  void flushTX();
   size_t write(const uint8_t c);
   size_t write(const uint8_t* buffer, size_t size);
 

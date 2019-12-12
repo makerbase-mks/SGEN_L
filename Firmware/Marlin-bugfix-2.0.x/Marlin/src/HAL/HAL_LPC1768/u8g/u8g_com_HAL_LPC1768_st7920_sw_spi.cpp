@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -57,10 +57,10 @@
 
 #include "../../../inc/MarlinConfigPre.h"
 
-#if HAS_GRAPHICAL_LCD
+#if ENABLED(U8GLIB_ST7920)
 
 #include <U8glib.h>
-#include "SoftwareSPI.h"
+#include <SoftwareSPI.h>
 #include "../../shared/Delay.h"
 
 #undef SPI_SPEED
@@ -141,6 +141,5 @@ uint8_t u8g_com_HAL_LPC1768_ST7920_sw_spi_fn(u8g_t *u8g, uint8_t msg, uint8_t ar
   return 1;
 }
 
-#endif // HAS_GRAPHICAL_LCD
-
+#endif // U8GLIB_ST7920
 #endif // TARGET_LPC1768

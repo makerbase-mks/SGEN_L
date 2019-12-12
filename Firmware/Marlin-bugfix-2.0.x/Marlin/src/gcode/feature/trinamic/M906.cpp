@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
 
 #include "../../gcode.h"
 #include "../../../feature/tmc_util.h"
-#include "../../../module/stepper_indirection.h"
+#include "../../../module/stepper/indirection.h"
 
 /**
  * M906: Set motor current in milliamps.
@@ -43,8 +43,8 @@
  * With no parameters report driver currents.
  */
 void GcodeSuite::M906() {
-  #define TMC_SAY_CURRENT(Q) tmc_get_current(stepper##Q)
-  #define TMC_SET_CURRENT(Q) tmc_set_current(stepper##Q, value)
+  #define TMC_SAY_CURRENT(Q) tmc_print_current(stepper##Q)
+  #define TMC_SET_CURRENT(Q) stepper##Q.rms_current(value)
 
   bool report = true;
 

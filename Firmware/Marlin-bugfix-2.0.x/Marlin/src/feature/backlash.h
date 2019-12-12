@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,58 +24,57 @@
 #include "../inc/MarlinConfigPre.h"
 #include "../module/planner.h"
 
+constexpr uint8_t all_on = 0xFF, all_off = 0x00;
+
 class Backlash {
 public:
   #if ENABLED(BACKLASH_GCODE)
+    static xyz_float_t distance_mm;
     static uint8_t correction;
-    #ifdef BACKLASH_DISTANCE_MM
-      static float distance_mm[XYZ];
-    #endif
     #ifdef BACKLASH_SMOOTHING_MM
       static float smoothing_mm;
     #endif
-    static inline void set_correction(const float &v) { correction = MAX(0, MIN(1.0, v)) * all_on; }
+
+    static inline void set_correction(const float &v) { correction = _MAX(0, _MIN(1.0, v)) * all_on; }
     static inline float get_correction() { return float(ui8_to_percent(correction)) / 100.0f; }
-  #elif ENABLED(BACKLASH_COMPENSATION)
+  #else
     static constexpr uint8_t correction = (BACKLASH_CORRECTION) * 0xFF;
-    #ifdef BACKLASH_DISTANCE_MM
-      static constexpr float distance_mm[XYZ] = BACKLASH_DISTANCE_MM;
-    #endif
+    static const xyz_float_t distance_mm;
     #ifdef BACKLASH_SMOOTHING_MM
       static constexpr float smoothing_mm = BACKLASH_SMOOTHING_MM;
     #endif
-    static inline void set_correction(float) { }
-    static inline float get_correction() { return float(ui8_to_percent(correction)) / 100.0f; }
-  #else
-    static constexpr uint8_t correction = 0;
-    static inline void set_correction(float) { }
-    static inline float get_correction() { return 0; }
   #endif
 
   #if ENABLED(MEASURE_BACKLASH_WHEN_PROBING)
     private:
-      static float measured_mm[XYZ];
-      static uint8_t measured_count[XYZ];
+      static xyz_float_t measured_mm;
+      static xyz_uint8_t measured_count;
     public:
       static void measure_with_probe();
   #endif
 
-  static inline float get_measurement(const uint8_t e) {
+  static inline float get_measurement(const AxisEnum a) {
     // Return the measurement averaged over all readings
     return (
       #if ENABLED(MEASURE_BACKLASH_WHEN_PROBING)
-        measured_count[e] > 0 ? measured_mm[e] / measured_count[e] :
+        measured_count[a] > 0 ? measured_mm[a] / measured_count[a] :
       #endif
       0
     );
+    #if DISABLED(MEASURE_BACKLASH_WHEN_PROBING)
+      UNUSED(a);
+    #endif
   }
 
-  static inline bool has_measurement(const uint8_t e) {
+  static inline bool has_measurement(const AxisEnum a) {
     return (false
       #if ENABLED(MEASURE_BACKLASH_WHEN_PROBING)
-        || (measured_count[e] > 0)
+        || (measured_count[a] > 0)
       #endif
     );
+    #if DISABLED(MEASURE_BACKLASH_WHEN_PROBING)
+      UNUSED(a);
+    #endif
   }
 
   static inline bool has_any_measurement() {

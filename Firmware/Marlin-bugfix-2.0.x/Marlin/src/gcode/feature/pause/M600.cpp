@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -60,7 +60,6 @@
  *  Default values are used for omitted arguments.
  */
 void GcodeSuite::M600() {
-  point_t park_point = NOZZLE_PARK_POINT;
 
   #if ENABLED(MIXING_EXTRUDER)
     const int8_t target_e_stepper = get_target_e_stepper_from_command();
@@ -98,7 +97,7 @@ void GcodeSuite::M600() {
 
   #if ENABLED(HOME_BEFORE_FILAMENT_CHANGE)
     // Don't allow filament change without homing first
-    if (axis_unhomed_error()) gcode.home_all_axes();
+    if (axes_need_homing()) home_all_axes();
   #endif
 
   #if EXTRUDERS > 1
@@ -109,7 +108,7 @@ void GcodeSuite::M600() {
       #if ENABLED(DUAL_X_CARRIAGE)
         && dual_x_carriage_mode != DXC_DUPLICATION_MODE && dual_x_carriage_mode != DXC_MIRRORED_MODE
       #endif
-    ) tool_change(target_extruder, 0, false);
+    ) tool_change(target_extruder, false);
   #endif
 
   // Initial retract before move to filament change position
@@ -119,6 +118,8 @@ void GcodeSuite::M600() {
     #endif
   );
 
+  xyz_pos_t park_point NOZZLE_PARK_POINT;
+
   // Lift Z axis
   if (parser.seenval('Z')) park_point.z = parser.linearval('Z');
 
@@ -126,9 +127,8 @@ void GcodeSuite::M600() {
   if (parser.seenval('X')) park_point.x = parser.linearval('X');
   if (parser.seenval('Y')) park_point.y = parser.linearval('Y');
 
-  #if HAS_HOTEND_OFFSET && DISABLED(DUAL_X_CARRIAGE, DELTA)
-    park_point.x += hotend_offset[X_AXIS][active_extruder];
-    park_point.y += hotend_offset[Y_AXIS][active_extruder];
+  #if HAS_HOTEND_OFFSET && NONE(DUAL_X_CARRIAGE, DELTA)
+    park_point += hotend_offset[active_extruder];
   #endif
 
   #if ENABLED(MMU2_MENUS)
@@ -170,7 +170,7 @@ void GcodeSuite::M600() {
   #if EXTRUDERS > 1
     // Restore toolhead if it was changed
     if (active_extruder_before_filament_change != active_extruder)
-      tool_change(active_extruder_before_filament_change, 0, false);
+      tool_change(active_extruder_before_filament_change, false);
   #endif
 
   #if ENABLED(MIXING_EXTRUDER)

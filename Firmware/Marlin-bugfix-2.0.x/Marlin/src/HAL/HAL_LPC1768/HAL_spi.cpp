@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 
 /**
  * Software SPI functions originally from Arduino Sd2Card Library
- * Copyright (C) 2009 by William Greiman
+ * Copyright (c) 2009 by William Greiman
  */
 
 /**
@@ -49,18 +49,14 @@
 #ifdef TARGET_LPC1768
 
 #include "../../inc/MarlinConfig.h"
-// --------------------------------------------------------------------------
-// Includes
-// --------------------------------------------------------------------------
-
 #include <SPI.h>
 
-// --------------------------------------------------------------------------
+// ------------------------
 // Public functions
-// --------------------------------------------------------------------------
+// ------------------------
 #if ENABLED(LPC_SOFTWARE_SPI)
 
-  #include "SoftwareSPI.h"
+  #include <SoftwareSPI.h>
 
   // Software SPI
 
@@ -129,18 +125,18 @@
     PinCfg.Funcnum = 2;
     PinCfg.OpenDrain = 0;
     PinCfg.Pinmode = 0;
-    PinCfg.Pinnum = LPC1768_PIN_PIN(SCK_PIN);
-    PinCfg.Portnum = LPC1768_PIN_PORT(SCK_PIN);
+    PinCfg.Pinnum = LPC176x::pin_bit(SCK_PIN);
+    PinCfg.Portnum = LPC176x::pin_port(SCK_PIN);
     PINSEL_ConfigPin(&PinCfg);
     SET_OUTPUT(SCK_PIN);
 
-    PinCfg.Pinnum = LPC1768_PIN_PIN(MISO_PIN);
-    PinCfg.Portnum = LPC1768_PIN_PORT(MISO_PIN);
+    PinCfg.Pinnum = LPC176x::pin_bit(MISO_PIN);
+    PinCfg.Portnum = LPC176x::pin_port(MISO_PIN);
     PINSEL_ConfigPin(&PinCfg);
     SET_INPUT(MISO_PIN);
 
-    PinCfg.Pinnum = LPC1768_PIN_PIN(MOSI_PIN);
-    PinCfg.Portnum = LPC1768_PIN_PORT(MOSI_PIN);
+    PinCfg.Pinnum = LPC176x::pin_bit(MOSI_PIN);
+    PinCfg.Portnum = LPC176x::pin_port(MOSI_PIN);
     PINSEL_ConfigPin(&PinCfg);
     SET_OUTPUT(MOSI_PIN);
     // divide PCLK by 2 for SSP0
@@ -162,7 +158,7 @@
     // setup for SPI mode
     SSP_CFG_Type HW_SPI_init; // data structure to hold init values
     SSP_ConfigStructInit(&HW_SPI_init);  // set values for SPI mode
-    HW_SPI_init.ClockRate = Marlin_speed[MIN(spiRate, 6)]; // put in the specified bit rate
+    HW_SPI_init.ClockRate = Marlin_speed[_MIN(spiRate, 6)]; // put in the specified bit rate
     HW_SPI_init.Mode |= SSP_CR1_SSP_EN;
     SSP_Init(LPC_SSPn, &HW_SPI_init);  // puts the values into the proper bits in the SSP0 registers
   }

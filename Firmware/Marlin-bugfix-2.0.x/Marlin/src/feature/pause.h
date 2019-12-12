@@ -1,9 +1,9 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
- * Copyright (C) 2011 Camiel Gubbels / Erik van der Zalm
+ * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ typedef struct {
 enum PauseMode : char {
   PAUSE_MODE_SAME,
   PAUSE_MODE_PAUSE_PRINT,
+  PAUSE_MODE_CHANGE_FILAMENT,
   PAUSE_MODE_LOAD_FILAMENT,
   PAUSE_MODE_UNLOAD_FILAMENT
 };
@@ -81,9 +82,9 @@ extern uint8_t did_pause_print;
   #define DXC_PASS
 #endif
 
-void do_pause_e_move(const float &length, const float &fr_mm_s);
+void do_pause_e_move(const float &length, const feedRate_t &fr_mm_s);
 
-bool pause_print(const float &retract, const point_t &park_point, const float &unload_length=0, const bool show_lcd=false DXC_PARAMS);
+bool pause_print(const float &retract, const xyz_pos_t &park_point, const float &unload_length=0, const bool show_lcd=false DXC_PARAMS);
 
 void wait_for_confirmation(const bool is_reload=false, const int8_t max_beep_count=0 DXC_PARAMS);
 

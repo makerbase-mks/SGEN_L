@@ -24,4 +24,4 @@
   
 ## How to buy the MKS SGEN_L  
   https://www.aliexpress.com/item/33036918120.html?spm=2114.12010612.8148356.5.86d511412DjN3h
-![MKS SGEN_L](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/MKS SGEN_L.png "MKS SGEN_L")
+![MKS_SGEN_L](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/MKS_SGEN_L.png "MKS SGEN_L")

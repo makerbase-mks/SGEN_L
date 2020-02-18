@@ -7,8 +7,8 @@
 - Support Marlin2.0 and Smoothieware firmware
 
 ## Firmware
-  Marlin2.0 link: https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x
-  Smoothieware link: http://smoothieware.org/
+  - Marlin2.0 link: https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x
+  - Smoothieware link: http://smoothieware.org/
   Of course, you cna download firmware form SGEN_L path.
 ### How to Build Marlin2.0 by platformio and update firmware
   - Open platformio.ini file, set default_envs = LPC1768

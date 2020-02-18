@@ -18,9 +18,9 @@
   - Build firmware
   ![3-build](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/3-build.png "3-build")
   - Build done
-  ![4-build done](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/4-build done.png "4-build done")
+  ![4-build_done](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/4-build_done.png "4-build done")
   - Copy firmware.bin to TF card, inset MKS SGEN_L board, reset or repower uptade firmware.(firmware.bin path ".pio\build\LPC1768")
-  ![5-copy bin](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/5-copy bin.png "5-copy bin")
+  ![5-copy_bin](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/5-copy_bin.png "5-copy bin")
   
 ## How to buy the MKS SGEN_L  
   https://www.aliexpress.com/item/33036918120.html?spm=2114.12010612.8148356.5.86d511412DjN3h

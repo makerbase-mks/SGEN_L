@@ -1,27 +1,18 @@
 # MKS SGEN_L
-## Features
-- 32-bit MCU, LPC1768, CPU frequencies of up to 100 MHz
-- Support TMC2208/2209 UART mode, TMC2130 SPI mode
-- Support MKS TFT24/28/32/35/70...
-- Support MKS LCD12864B/LCD12864/MKS MINI12864...
-- Support Marlin2.0 and Smoothieware firmware
+MKS SGEN_L is a powerful 32-bit 3D printer control board with LPC1768. Support Marlin2.0, Smoothieware. Support MKS LCD12864B/MINI12864/LCD2004/12864 and MKS TFT Touch Screens. The motherboard integrates SPI / UART interface and works with MKS TMC2130/TMC2208 V2.0/TMC2209. It can be used after plugged in. No soldering or flying lead is required ...
 
-## Firmware
-  - Marlin2.0 link: https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x
-  - Smoothieware link: http://smoothieware.org/
-  - Of course, you cna download firmware form SGEN_L path.
-### How to Build Marlin2.0 by platformio and update firmware
-  - Open platformio.ini file, set default_envs = LPC1768
-  ![1-LPC1768](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/1-LPC1768.png "1-LPC1768")
-  - Open configuration.h file, set board as MKS SGEN_L
-  ![2-SGEN_L](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/2-SGEN_L.png "2-SGEN_L")
-  - Build firmware
-  ![3-build](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/3-build.png "3-build")
-  - Build done
-  ![4-build_done](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/4-build_done.png "4-build done")
-  - Copy firmware.bin to TF card, inset MKS SGEN_L board, reset or repower uptade firmware.(firmware.bin path ".pio\build\LPC1768")
-  ![5-copy_bin](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/5-copy_bin.png "5-copy bin")
-  
-## How to buy the MKS SGEN_L  
-  https://www.aliexpress.com/item/33036918120.html?spm=2114.12010612.8148356.5.86d511412DjN3h
-![MKS_SGEN_L](https://github.com/makerbase-mks/SGEN_L/blob/master/Picture/MKS_SGEN_L.png "MKS SGEN_L")
+## Related tutorials and Notice
+- User Manual.[click here](https://github.com/makerbase-mks/SGEN_L/wiki/MKS-SGEN_L-User-Manual)
+- Thank you very much 3D Maker ES's video for MKS SGEN_L.[click here](https://www.youtube.com/watch?v=yO_QBpcF2Rc)
+- Thank you very much Aleksandr Beloborodov's video for MKS SGEN_L.[click here](https://www.youtube.com/watch?v=NXs1XujA4tQ)
+- Welcome to follow us on Facebook to learn about the company's latest developments.[click here](https://www.facebook.com/Makerbase.mks/)
+
+## Firmware description
+- Support Marlin2.0.[click here](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
+- Support Smoothieware.[click here](https://github.com/Smoothieware/Smoothieware)
+- SGEN_L path Smoothieware bin file.[click here](https://github.com/makerbase-mks/SGEN_L/tree/master/Firmware/Smoothieware)
+
+## Note
+- Thank you for using MKS products. If you have any questions during use, please contact us in time and we will work with you to solve it.
+- For more product dynamic information and tutorial materials, you can always follow MKS's Facebook and GitHub and YouTube. Thank you!
+![](https://github.com/makerbase-mks/MKS-Robin-Nano/blob/master/hardware/Image/MKS_FGA.png)

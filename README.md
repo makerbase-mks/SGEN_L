@@ -3,7 +3,7 @@ MKS SGEN_L is a powerful 32-bit 3D printer control board with LPC1768. Support M
 
 ## Related tutorials and Notice
 - User Manual.[click here](https://github.com/makerbase-mks/SGEN_L/wiki/MKS-SGEN_L-User-Manual)
-- MKS TMC2209 V2.0 uart mode SENSORLESS_HOMING function.[click here](https://www.youtube.com/watch?v=vSgcH2wjCwY&tdsourcetag=s_pctim_aiomsg)
+- Use MKS TMC2209 V2.0 uart mode SENSORLESS_HOMING function.[click here](https://www.youtube.com/watch?v=vSgcH2wjCwY&tdsourcetag=s_pctim_aiomsg)
 - Thank you very much 3D Maker ES's video for MKS SGEN_L.[click here](https://www.youtube.com/watch?v=yO_QBpcF2Rc)
 - Thank you very much Aleksandr Beloborodov's video for MKS SGEN_L.[click here](https://www.youtube.com/watch?v=NXs1XujA4tQ)
 - Welcome to follow us on Facebook to learn about the company's latest developments.[click here](https://www.facebook.com/Makerbase.mks/)

@@ -7,6 +7,8 @@ MKS SGEN_L is a powerful 32-bit 3D printer control board with LPC1768. Support M
 - Thank you very much Aleksandr Beloborodov's video for MKS SGEN_L.[click here](https://www.youtube.com/watch?v=NXs1XujA4tQ)
 - Welcome to follow us on Facebook to learn about the company's latest developments.[click here](https://www.facebook.com/Makerbase.mks/)
 
+## Related tutorials and Notice
+
 ## Firmware description
 - Support Marlin2.0.[click here](https://github.com/MarlinFirmware/Marlin/tree/bugfix-2.0.x)
 - Support Smoothieware.[click here](https://github.com/Smoothieware/Smoothieware)

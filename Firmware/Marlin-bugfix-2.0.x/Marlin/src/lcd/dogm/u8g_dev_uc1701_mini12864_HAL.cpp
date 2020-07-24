@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 
@@ -57,8 +57,6 @@
 
 #if HAS_GRAPHICAL_LCD
 
-#include <U8glib.h>
-
 #include "HAL_LCD_com_defines.h"
 
 #define WIDTH 128
@@ -75,7 +73,6 @@
 #define UC1701_V5_RATIO(N)       (0x20 | ((N) & 0x7))
 #define UC1701_CONTRAST(N)       (0x81), (N)
 
-//#define UC1701_COLUMN_ADR(N)     (0x10 | (((N) >> 4) & 0xF)), ((N) & 0xF)
 #define UC1701_COLUMN_HI(N)      (0x10 | (((N) >> 4) & 0xF))
 #define UC1701_COLUMN_ADR(N)     UC1701_COLUMN_HI(N), ((N) & 0xF)
 #define UC1701_PAGE_ADR(N)       (0xB0 | (N))
@@ -121,8 +118,7 @@ static const uint8_t u8g_dev_uc1701_mini12864_HAL_init_seq[] PROGMEM = {
 static const uint8_t u8g_dev_uc1701_mini12864_HAL_data_start[] PROGMEM = {
   U8G_ESC_ADR(0),             // instruction mode
   U8G_ESC_CS(1),              // enable chip
-
-  #if ENABLED(MKS_MINI_12864)
+  #if ANY(MKS_MINI_12864, ENDER2_STOCKDISPLAY, FYSETC_MINI_12864)
     UC1701_START_LINE(0),     // set display start line to 0
     UC1701_ADC_REVERSE(0),    // ADC set to reverse
     UC1701_OUT_MODE(1),       // common output mode

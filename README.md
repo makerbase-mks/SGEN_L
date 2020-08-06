@@ -1,5 +1,6 @@
 # MKS SGEN_L
-MKS SGEN_L is a powerful 32-bit 3D printer control board with LPC1768. Support Marlin2.0, Smoothieware.
+- If you want to know about MKS SGEN_L V2, you can refer to: ***[MKS SGEN_L V2]***(https://github.com/makerbase-mks/MKS-SGEN_L-V2)
+- MKS SGEN_L is a powerful 32-bit 3D printer control board with LPC1768. Support Marlin2.0, Smoothieware.
 
 ## Related tutorials and Notice
 - User Manual.[click here](https://github.com/makerbase-mks/SGEN_L/wiki)

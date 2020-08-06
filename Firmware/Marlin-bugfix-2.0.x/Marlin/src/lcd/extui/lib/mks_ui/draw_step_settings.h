@@ -21,30 +21,13 @@
  */
 #pragma once
 
-/**
- * The purpose of this file is just include Marlin Configuration files,
- * to discover which FEATURES are enabled, without any HAL include.
- * Used by common-features-dependencies.py
- */
-
-#ifndef __MARLIN_FIRMWARE__
-#define __MARLIN_FIRMWARE__
+#ifdef __cplusplus
+extern "C" { /* C-declarations for C++ */
 #endif
 
-//
-// Prefix header to acquire configurations
-//
-#include <stdint.h>
+extern void lv_draw_step_settings(void);
+extern void lv_clear_step_settings();
 
-#include "../../../../Marlin/src/core/boards.h"
-#include "../../../../Marlin/src/core/macros.h"
-#include "../../../../Marlin/Configuration.h"
-
-#include "../../../../Marlin/Version.h"
-
-#include "../../../../Marlin/src/inc/Conditionals_LCD.h"
-
-#include "../../../../Marlin/src/core/drivers.h"
-#include "../../../../Marlin/Configuration_adv.h"
-
-#include "../../../../Marlin/src/inc/Conditionals_adv.h"
+#ifdef __cplusplus
+} /* C-declarations for C++ */
+#endif

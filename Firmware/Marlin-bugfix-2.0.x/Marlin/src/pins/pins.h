@@ -408,6 +408,8 @@
   #include "lpc1769/pins_TH3D_EZBOARD.h"        // LPC1769                                env:LPC1769
 #elif MB(BTT_SKR_V1_4_TURBO)
   #include "lpc1769/pins_BTT_SKR_V1_4_TURBO.h"  // LPC1769                                env:LPC1769
+#elif MB(MKS_SGEN_L_V2)
+  #include "lpc1769/pins_MKS_SGEN_L_V2.h"       // LPC1769                                env:LPC1769
 
 //
 // Due (ATSAM) boards
@@ -507,7 +509,9 @@
 #elif MB(MKS_ROBIN_MINI)
   #include "stm32f1/pins_MKS_ROBIN_MINI.h"      // STM32F1                                env:mks_robin_mini
 #elif MB(MKS_ROBIN_NANO)
-  #include "stm32f1/pins_MKS_ROBIN_NANO.h"      // STM32F1                                env:mks_robin_nano
+  #include "stm32f1/pins_MKS_ROBIN_NANO.h"      // STM32F1                                env:mks_robin_nano35
+#elif MB(MKS_ROBIN_NANO_V2)
+  #include "stm32f1/pins_MKS_ROBIN_NANO_V2.h"   // STM32F1                                env:mks_robin_nano35
 #elif MB(MKS_ROBIN_LITE)
   #include "stm32f1/pins_MKS_ROBIN_LITE.h"      // STM32F1                                env:mks_robin_lite
 #elif MB(BTT_SKR_MINI_V1_1)

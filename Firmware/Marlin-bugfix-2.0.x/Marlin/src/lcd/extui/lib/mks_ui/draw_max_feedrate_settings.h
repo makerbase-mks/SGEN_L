@@ -25,10 +25,9 @@
 extern "C" { /* C-declarations for C++ */
 #endif
 
-extern void lv_draw_opration(void);
-extern void lv_clear_opration();
+extern void lv_draw_max_feedrate_settings(void);
+extern void lv_clear_max_feedrate_settings();
 
-//extern void disp_temp_ready_print();
 #ifdef __cplusplus
 } /* C-declarations for C++ */
 #endif

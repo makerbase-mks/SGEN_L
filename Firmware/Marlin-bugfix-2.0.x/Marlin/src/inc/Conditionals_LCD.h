@@ -255,12 +255,17 @@
   #define IS_ULTIPANEL
 #endif
 
+// LVGL UI, SPI or FSMC
+#if EITHER(TFT_LVGL_UI_SPI, TFT_LVGL_UI_FSMC)
+  #define HAS_TFT_LVGL_UI 1
+#endif
+
 // FSMC/SPI TFT Panels
 #if ENABLED(FSMC_GRAPHICAL_TFT)
   #define DOGLCD
   #define IS_ULTIPANEL
   #define DELAYED_BACKLIGHT_INIT
-#elif ENABLED(SPI_GRAPHICAL_TFT)
+#elif ENABLED(TFT_LVGL_UI_SPI)
   #define DELAYED_BACKLIGHT_INIT
 #endif
 
@@ -742,4 +747,11 @@
  */
 #ifndef EXTRUDE_MINTEMP
   #define EXTRUDE_MINTEMP 170
+#endif
+
+/**
+ * To check if we need the folder src/features/leds
+ */
+#if ANY(TEMP_STAT_LEDS, HAS_COLOR_LEDS, HAS_CASE_LIGHT, PRINTER_EVENT_LEDS, LED_BACKLIGHT_TIMEOUT, PCA9632_BUZZER, LED_CONTROL_MENU)
+  #define HAS_LED_FEATURE 1
 #endif
